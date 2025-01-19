@@ -6,6 +6,7 @@ public class Game : MonoBehaviour
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private StartScreen _startScreen;
     [SerializeField] private EndGameScreen _endGameScreen;
+    [SerializeField] private TimeIncreaser _timeIncreaser;
 
     private void OnEnable()
     {
@@ -20,7 +21,6 @@ public class Game : MonoBehaviour
         _player.Initialize();
         _enemySpawner.Initialize();
         ShowStartScreen();
-        _endGameScreen.Close();
     }
 
     private void OnDisable()
@@ -42,16 +42,20 @@ public class Game : MonoBehaviour
     {
         Time.timeScale = 1f;
         _startScreen.Close();
-        _player.gameObject.SetActive(true);
+        _endGameScreen.Close();
+        _player.On();
         _enemySpawner.StartSpawn();
+        _timeIncreaser.StartIncreaseTimeScale();
     }
 
     private void EndGame(Spawnable spawnable)
     {
-        Time.timeScale = 0;
-        _endGameScreen.Open();
+        _timeIncreaser.EndIncreaseTimeScale();
+        _enemySpawner.EndSpawn();
         _player.Reset();
         _enemySpawner.Reset();
-        _player.gameObject.SetActive(false);
+        Time.timeScale = 0;
+        _endGameScreen.Open();
+        _player.Off();
     }
 }

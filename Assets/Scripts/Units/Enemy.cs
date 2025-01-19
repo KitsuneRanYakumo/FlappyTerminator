@@ -3,35 +3,42 @@ using UnityEngine;
 
 public class Enemy : Unit, IEndGameObject
 {
-    [SerializeField] private WallDetector _wallDetector;
+    [SerializeField] private CameraBoundaryEscapeDetector _escapeDetector;
     [SerializeField] private float _delayShooting;
 
-    public void Initialize(Vector2 position)
-    {
-        transform.position = position;
-        base.Initialize();
-    }
+    private Coroutine _coroutine;
 
     private void OnEnable()
     {
-        _wallDetector.FacedWithWall += OnLifeTimeFinished;
+        _escapeDetector.BordersEscaped += OnLifeTimeFinished;
     }
 
     private void OnDisable()
     {
-        _wallDetector.FacedWithWall -= OnLifeTimeFinished;
+        _escapeDetector.BordersEscaped -= OnLifeTimeFinished;
+    }
+
+    public void SetPosition(Vector2 position)
+    {
+        transform.position = position;
     }
 
     public void StartShooting()
     {
-        StartCoroutine(Shoot());
+        _coroutine = StartCoroutine(Shoot());
+    }
+
+    public void StopShooting()
+    {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
     }
 
     private IEnumerator Shoot()
     {
-        WaitForSecondsRealtime wait = new WaitForSecondsRealtime(_delayShooting);
+        WaitForSeconds wait = new WaitForSeconds(_delayShooting);
 
-        while (gameObject.activeSelf)
+        while (enabled)
         {
             Weapon.Shoot();
             yield return wait;

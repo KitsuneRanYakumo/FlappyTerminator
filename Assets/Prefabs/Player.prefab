@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5249349080049014339}
   - component: {fileID: 4752623235633464210}
   - component: {fileID: 8939921644364386513}
+  - component: {fileID: 232199866946175027}
   m_Layer: 0
   m_Name: VeiwPlayer
   m_TagString: Untagged
@@ -137,6 +138,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &232199866946175027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507392389217120141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf75446dc52b2b42b6186a943013a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 3376279135674720698}
 --- !u!1 &2295440545574033695
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +205,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3767462135504982649}
   - component: {fileID: 8399738653361131326}
-  - component: {fileID: 8234352538537041553}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -227,23 +240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964002e9c2c206f40862c0164d7aac1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pool: {fileID: 8234352538537041553}
+  PrefabSpawnable: {fileID: 5158098298534950016, guid: e9c54bf66c9ccf94da1fb0df7e173393, type: 3}
+  _size: 5
   _pointShot: {fileID: 2827845008533010186}
-  _shootingPower: 3
---- !u!114 &8234352538537041553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6663096823683783168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa22eeef918c8ae48a6b5d303933e112, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabSpawnable: {fileID: 5158098298534950016, guid: e9c54bf66c9ccf94da1fb0df7e173393, type: 3}
-  _size: 10
+  _shootingPower: 5
 --- !u!1 &7426556088127582909
 GameObject:
   m_ObjectHideFlags: 0

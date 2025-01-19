@@ -1,19 +1,17 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class EnemySpawner : Spawner
+public class EnemySpawner : Spawner<Enemy>
 {
     [SerializeField] private float _spawnFrequency = 3;
     [SerializeField] private float _upperPointSpawn = 5;
     [SerializeField] private float _lowerPointSpawn = -5;
 
-    private bool _isActive;
+    private Coroutine _coroutine;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        _isActive = true;
-    }
+    public event Action EnemyKilled;
 
     private void OnValidate()
     {
@@ -21,25 +19,42 @@ public class EnemySpawner : Spawner
             _upperPointSpawn = _lowerPointSpawn;
     }
 
-    public override void Reset()
-    {
-        base.Reset();
-        _isActive = true;
-    }
-
     public void StartSpawn()
     {
-        StartCoroutine(StartSpawnEnemies());
+        _coroutine = StartCoroutine(StartSpawnEnemies());
+    }
+
+    public void EndSpawn()
+    {
+        if ( _coroutine != null )
+            StopCoroutine(_coroutine);
+    }
+
+    protected override void CreateSpawnable()
+    {
+        Enemy enemy = Instantiate(PrefabSpawnable);
+        enemy.Initialize();
+        enemy.Off();
+        AddSpawnable(enemy);
+    }
+
+    protected override void PutSpawnable(Spawnable spawnable)
+    {
+        base.PutSpawnable(spawnable);
+        Enemy enemy = (Enemy)spawnable;
+        enemy.Reset();
+        enemy.HealthWasted -= OnEnemyKilled;
     }
 
     private IEnumerator StartSpawnEnemies()
     {
-        WaitForSecondsRealtime wait = new WaitForSecondsRealtime(_spawnFrequency);
+        WaitForSeconds wait = new WaitForSeconds(_spawnFrequency);
 
-        while (_isActive)
+        while (enabled)
         {
-            Enemy enemy = (Enemy)Pool.GetSpawnable();
-            enemy.Initialize(GenerateSpawnPosition());
+            Enemy enemy = GetSpawnable();
+            enemy.HealthWasted += OnEnemyKilled;
+            enemy.SetPosition(GenerateSpawnPosition());
             enemy.StartShooting();
             yield return wait;
         }
@@ -48,5 +63,10 @@ public class EnemySpawner : Spawner
     private Vector2 GenerateSpawnPosition()
     {
         return new Vector2(transform.position.x, Random.Range(_lowerPointSpawn, _upperPointSpawn));
+    }
+
+    private void OnEnemyKilled()
+    {
+        EnemyKilled?.Invoke();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class Unit : Spawnable, IDamageble
@@ -6,6 +7,9 @@ public abstract class Unit : Spawnable, IDamageble
     [SerializeField] private float _amountHealth;
 
     public Health Health { get; private set; }
+
+    public event Action DamageTaken;
+    public event Action HealthWasted;
 
     public void Initialize()
     {
@@ -22,8 +26,12 @@ public abstract class Unit : Spawnable, IDamageble
     public void TakeDamage(float damage)
     {
         Health.TakeDamage(damage);
+        DamageTaken?.Invoke();
 
         if (Health.Amount <= 0)
+        {
+            HealthWasted?.Invoke();
             OnLifeTimeFinished();
+        }
     }
 }

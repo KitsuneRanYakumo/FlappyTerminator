@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(UserInput))]
@@ -10,6 +11,8 @@ public class Player : Unit
 
     private UserInput _userInput;
     private bool _isFlying;
+
+    public event Action FlightStarted;
 
     public override void Reset()
     {
@@ -44,6 +47,7 @@ public class Player : Unit
         {
             _rotator.SetMaxRotation();
             _isFlying = true;
+            FlightStarted?.Invoke();
         }
 
         if (_userInput.IsShotButtonPressed)
