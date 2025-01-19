@@ -16,15 +16,15 @@ public class CameraBoundaries : MonoBehaviour
 
     private void Start()
     {
-        SetSize();
+        _boxCollider2D.size = GetSize();
         _boxCollider2D.isTrigger = true;
     }
 
-    private void SetSize()
+    private Vector2 GetSize()
     {
         Vector2 size = _camera.ViewportToWorldPoint(new Vector3(1f, 1f, _camera.nearClipPlane)) -
                        _camera.ViewportToWorldPoint(new Vector3(0, 0, _camera.nearClipPlane));
         size *= _sizeRatio;
-        _boxCollider2D.size = size;
+        return size;
     }
 }

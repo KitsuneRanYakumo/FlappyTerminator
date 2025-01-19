@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964002e9c2c206f40862c0164d7aac1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabSpawnable: {fileID: 5158098298534950016, guid: a19ae5637cf6dcb44b8242a6f19d9af3, type: 3}
+  PrefabSpawnable: {fileID: 541582595423717454, guid: a19ae5637cf6dcb44b8242a6f19d9af3, type: 3}
   _size: 15
   _pointShot: {fileID: 6585244396612407455}
   _shootingPower: 2

@@ -18,7 +18,7 @@ public class PlayerTacker : MonoBehaviour
 
     private void TrackUnit()
     {
-        var position = transform.position;
+        Vector3 position = transform.position;
         position.x = _player.transform.position.x + _xOffset;
         transform.position = position;
     }

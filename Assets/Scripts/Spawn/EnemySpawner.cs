@@ -24,7 +24,7 @@ public class EnemySpawner : Spawner<Enemy>
         _coroutine = StartCoroutine(StartSpawnEnemies());
     }
 
-    public void EndSpawn()
+    public void StopSpawn()
     {
         if ( _coroutine != null )
             StopCoroutine(_coroutine);

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public abstract class AnimatorController<T> : MonoBehaviour where T : Unit
+public abstract class AnimationsSwitcher<T> : MonoBehaviour where T : Unit
 {
     [SerializeField] protected T Unit;
 

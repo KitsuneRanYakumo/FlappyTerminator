@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 8229319368305510769}
   - component: {fileID: 6416838961370926898}
   - component: {fileID: 4855775533960737947}
-  - component: {fileID: 5158098298534950016}
   - component: {fileID: 5238735929678773003}
   - component: {fileID: 2266384697986379499}
   - component: {fileID: -7696940265344071807}
+  - component: {fileID: 4189312589828627194}
+  - component: {fileID: 541582595423717454}
   m_Layer: 0
   m_Name: BulletEnemy
   m_TagString: Untagged
@@ -134,21 +135,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
---- !u!114 &5158098298534950016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7182559775228823180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b495de50c3a15a4297b442a5f410cf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _unitDetector: {fileID: 5238735929678773003}
-  _escapeDetector: {fileID: 2266384697986379499}
-  _damage: 30
 --- !u!114 &5238735929678773003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,3 +186,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4189312589828627194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182559775228823180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e172b08e21ca249ad9f653f977b99e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &541582595423717454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182559775228823180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b495de50c3a15a4297b442a5f410cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 30

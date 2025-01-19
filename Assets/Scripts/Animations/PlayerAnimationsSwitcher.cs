@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerAnimatorController : AnimatorController<Player>
+public class PlayerAnimationsSwitcher : AnimationsSwitcher<Player>
 {
     private readonly int _flightTrigger = Animator.StringToHash("FlightTrigger");
 

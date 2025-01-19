@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bea4b397fdace84a818bfb59bfca3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemySpawner: {fileID: 0}
 --- !u!1 &6663096823683783168
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964002e9c2c206f40862c0164d7aac1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabSpawnable: {fileID: 5158098298534950016, guid: e9c54bf66c9ccf94da1fb0df7e173393, type: 3}
+  PrefabSpawnable: {fileID: 1181996519014137281, guid: e9c54bf66c9ccf94da1fb0df7e173393, type: 3}
   _size: 5
   _pointShot: {fileID: 2827845008533010186}
   _shootingPower: 5

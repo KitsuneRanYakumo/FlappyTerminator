@@ -51,7 +51,7 @@ public class Game : MonoBehaviour
     private void EndGame(Spawnable spawnable)
     {
         _timeIncreaser.EndIncreaseTimeScale();
-        _enemySpawner.EndSpawn();
+        _enemySpawner.StopSpawn();
         _player.Reset();
         _enemySpawner.Reset();
         Time.timeScale = 0;
